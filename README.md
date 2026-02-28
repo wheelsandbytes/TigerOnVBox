@@ -1,4 +1,6 @@
-# Install Mac OS X 10.4 Tiger on VirtualBox
+# Install Mac OS X 10.4.7 Tiger (Server) on VirtualBox on macOS Monterey
+
+![Screenshot of Tiger VM on Monterey](https://github.com/user-attachments/assets/054b4846-2627-44b1-b92b-758f81880dab)
 
 ## Prerequisites
 This guide assumes that you have:
@@ -6,23 +8,19 @@ This guide assumes that you have:
 - a universal or i386 install image or disk for Mac OS X 10.4 Tiger
 
 The environment of the example installation procedure was:
- - MacBook Pro (Retina, 15-inch, Mid 2014)
- - OS X El Capitan (10.11.6)
- - VirtualBox 5.1.18
- - the Mac OS X Server v10.4.7 (Universal) Build 8K1079 image (which can be
+ - MacBook Pro (Retina, 15-inch, Mid 2015) - MacBookPro11,5
+   - 2.5 GHz Quad-Core Intel Core i7
+ - macOS Monterey 12.7.6 (21H1320)
+ - VirtualBox 6.1.34 r150636 (download directly from Oracle [here](https://download.virtualbox.org/virtualbox/6.1.34/VirtualBox-6.1.34-150636-OSX.dmg))
+ - the Mac OS X Server v10.4.7 (Universal) image ~~(which can be
    found by searching for "10.4" in
-   [https://developer.apple.com/download/more/](https://developer.apple.com/download/more/))
+   [https://developer.apple.com/download/more/](https://developer.apple.com/download/more/))~~ (which can be found on [Macintosh Repository](https://www.macintoshrepository.org/13602-mac-os-x-server-10-4-7-tiger-))
 
 ## Create a new virtual machine
-If trust the files in the repository and want to skip the procedure you can:
-- download [Tiger.ova](Tiger.ova) and import it in VirtualBox (by
-  double-clicking it or opening it from *File → Import Appliance...*), or
-- copy the `Tiger` folder from this repository to your `VirtualBox VMs` folder
-  and add it in VirtualBox selecting it in from the *Machine → Add...* menu
 
-If you like to see what it takes to get it done, the following step-by-step
+The following step-by-step
 procedure will guide you in the creation and configuration of the virtual
-machine.
+machine:
 
 1. select *Machine → New...* from the menu (or click on the *New* button)
 2. choose the name of your virtual machine (the example uses "Tiger")
@@ -42,18 +40,18 @@ machine.
    name of your virtual machine):
 
 ```
-VBoxManage modifyvm Tiger --mouse usb
-VBoxManage modifyvm Tiger --firmware efi32
-VBoxManage modifyvm Tiger --cpu-profile 'Intel Pentium 4 3.00GHz'
-VBoxManage modifyvm Tiger --cpuidset 00000000 00000004 756e6547 6c65746e 49656e69
-VBoxManage modifyvm Tiger --cpuidset 00000001 00000f43 00020800 fbffffff ffffffff
-VBoxManage modifyvm Tiger --cpuidset 80000001 00000000 00000000 ffffffff ffffffff
-VBoxManage setextradata Tiger VBoxInternal/Devices/efi/0/Config/DmiBIOSVersion EFI32..Virtual.Box
-VBoxManage setextradata Tiger VBoxInternal/Devices/efi/0/Config/DmiUseHostInfo 0
-VBoxManage setextradata Tiger VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC 1
+VBoxManage modifyvm "Tiger" --mouse usb
+VBoxManage modifyvm "Tiger" --firmware efi32
+VBoxManage modifyvm "Tiger" --cpu-profile 'Intel Pentium 4 3.00GHz'
+VBoxManage modifyvm "Tiger" --cpuidset 00000000 00000004 756e6547 6c65746e 49656e69
+VBoxManage modifyvm "Tiger" --cpuidset 00000001 00000f43 00020800 fbffffff ffffffff
+VBoxManage modifyvm "Tiger" --cpuidset 80000001 00000000 00000000 ffffffff ffffffff
+VBoxManage setextradata "Tiger" VBoxInternal/Devices/efi/0/Config/DmiBIOSVersion EFI32..Virtual.Box
+VBoxManage setextradata "Tiger" VBoxInternal/Devices/efi/0/Config/DmiUseHostInfo 0
+VBoxManage setextradata "Tiger" VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC 1
 ```
 
-![Expected result](images/settings-pre.png)
+![Expected result](https://github.com/user-attachments/assets/08b18c95-8c10-43bf-88f6-0e982e783b28)
 
 The virtual machine should now be ready for the install procedure. Its `vbox`
 file should match the reference [`Tiger.vbox`](Tiger/Tiger.vbox) except for the
